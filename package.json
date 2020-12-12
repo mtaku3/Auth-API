@@ -1,0 +1,19 @@
+{
+  "name": "auth-api",
+  "version": "1.0.0",
+  "description": "Auth API using express and mongoose",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtaku3/Auth-API.git"
+  },
+  "author": "mtaku3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtaku3/Auth-API/issues"
+  },
+  "homepage": "https://github.com/mtaku3/Auth-API#readme"
+}
