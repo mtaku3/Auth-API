@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 mongoose
-	.connect('', { useNewUrlParser: true })
+	.connect('')
 	.then(() => {
 		console.log('Connected to MongoDB successfully :)');
 	})
