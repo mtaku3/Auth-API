@@ -10,10 +10,10 @@ module.exports = function (app) {
 	/* USER ROUTES */
 
 	/**
-	 * POST /users
+	 * POST /user
 	 * Purpose: Sign up
 	 */
-	app.post('/users', (req, res) => {
+	app.post('/user', (req, res) => {
 		// User sign up
 
 		let body = req.body;
@@ -45,10 +45,10 @@ module.exports = function (app) {
 	});
 
 	/**
-	 * POST /users/login
+	 * POST /user/login
 	 * Purpose: Login
 	 */
-	app.post('/users/login', (req, res) => {
+	app.post('/user/login', (req, res) => {
 		let email = req.body.email;
 		let password = req.body.password;
 
@@ -80,10 +80,10 @@ module.exports = function (app) {
 	});
 
 	/**
-	 * GET /users/me/access-token
+	 * GET /user/me/access-token
 	 * Purpose: generates and returns an access token
 	 */
-	app.get('/users/me/access-token', verifySession, (req, res) => {
+	app.get('/user/me/access-token', verifySession, (req, res) => {
 		// we know that the user/caller is authenticated and we have the user_id and user object available to us
 		req.userObject
 			.generateAccessAuthToken()
