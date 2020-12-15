@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 mongoose
+<<<<<<< HEAD
 	.connect('mongodb://localhost:27017')
+=======
+	.connect('')
+>>>>>>> origin/master
 	.then(() => {
 		console.log('Connected to MongoDB successfully :)');
 	})

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const {
 	authenticate,
 	authenticateWithExclude,
@@ -10,4 +11,11 @@ module.exports = {
 	authenticateWithExclude,
 	verifySession,
 	check,
+=======
+const { authenticate, verifySession } = require('./auth.js');
+
+module.exports = {
+	authenticate,
+	verifySession,
+>>>>>>> origin/master
 };

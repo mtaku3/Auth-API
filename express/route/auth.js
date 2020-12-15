@@ -1,5 +1,9 @@
 // load middlewares
+<<<<<<< HEAD
 const { authenticate, verifySession, check } = require('../middleware');
+=======
+const { authenticate, verifySession } = require('../middleware');
+>>>>>>> origin/master
 
 // Load in the mongoose models
 const { User } = require('../../db/models');
@@ -13,7 +17,11 @@ module.exports = function (app) {
 	 * POST /user
 	 * Purpose: Sign up
 	 */
+<<<<<<< HEAD
 	app.post('/user', authenticate, (req, res) => {
+=======
+	app.post('/user', (req, res) => {
+>>>>>>> origin/master
 		// User sign up
 
 		let body = req.body;
@@ -48,6 +56,7 @@ module.exports = function (app) {
 	 * POST /user/login
 	 * Purpose: Login
 	 */
+<<<<<<< HEAD
 	app.post(
 		'/user/login',
 		(req, res, next) => {
@@ -88,12 +97,48 @@ module.exports = function (app) {
 				});
 		}
 	);
+=======
+	app.post('/user/login', (req, res) => {
+		let email = req.body.email;
+		let password = req.body.password;
+
+		User.findByCredentials(email, password)
+			.then((user) => {
+				return user
+					.createSession()
+					.then((refreshToken) => {
+						// Session created successfully - refreshToken returned.
+						// now we geneate an access auth token for the user
+
+						return user
+							.generateAccessAuthToken()
+							.then((accessToken) => {
+								// access auth token generated successfully, now we return an object containing the auth tokens
+								return { accessToken, refreshToken };
+							});
+					})
+					.then((authTokens) => {
+						// Now we construct and send the response to the user with their auth tokens in the header and the user object in the body
+						res.header('x-refresh-token', authTokens.refreshToken)
+							.header('x-access-token', authTokens.accessToken)
+							.send(user);
+					});
+			})
+			.catch((e) => {
+				res.status(400).send(e);
+			});
+	});
+>>>>>>> origin/master
 
 	/**
 	 * GET /user/me/access-token
 	 * Purpose: generates and returns an access token
 	 */
+<<<<<<< HEAD
 	app.get('/user/me/access-token', verifySession, check, (req, res) => {
+=======
+	app.get('/user/me/access-token', verifySession, (req, res) => {
+>>>>>>> origin/master
 		// we know that the user/caller is authenticated and we have the user_id and user object available to us
 		req.userObject
 			.generateAccessAuthToken()
